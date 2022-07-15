@@ -1,0 +1,20 @@
+logging:
+  level:
+    ROOT: INFO
+#    org.apache.rocketmq: DEBUG
+    io.github.notoday.netty.remoting: DEBUG
+    io.github.notoday.command.processor.examples: DEBUG
+
+spring:
+  application:
+    name: processor-examples
+
+server:
+  port: 0
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: DEFAULT
+    retry-times-when-send-async-failed: 0
+    send-message-timeout: 3000
