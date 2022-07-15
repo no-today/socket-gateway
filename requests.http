@@ -1,0 +1,18 @@
+POST http://localhost:8899/api/services/invoke/no-today
+Content-Type: application/json
+
+{
+  "reqId": 0,
+  "version": 0,
+  "flag": 0,
+  "code": 0,
+  "remark": "",
+  "body": [72, 101, 108, 108, 111],
+  "extFields": {
+    "reqId": "0",
+    "version": "0",
+    "flag": 0,
+    "code": 0,
+    "remark": ""
+  }
+}

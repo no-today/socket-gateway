@@ -1,0 +1,27 @@
+logging:
+  level:
+    ROOT: INFO
+    io.github.notoday.socket.gateway.server: DEBUG
+    io.github.notoday.netty.remoting: DEBUG
+    org.apache.rocketmq: DEBUG
+
+spring:
+  application:
+    name: socket-gateway
+
+server:
+  port: 8899
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: DEFAULT
+    retry-times-when-send-async-failed: 0
+    send-message-timeout: 3000
+
+application:
+  stop-forward: false
+  call-server-topic: callServer
+  security-config:
+    # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
+    base64-secret: ZmI2OGI0Y2YwN2U4NjdjZDM5MjM1MGEwYzE3NzNlYzRkOGQ0MDE3NmJlNTY0NTMzNzk4ZjJlZDc0Mzg0MGFiZjczMjY1OTZmNmNjN2RmZWM3NmNkNzk2NTBjNjNmNTI4OWQ3MjE4OTk4MjI5MzNmZGI3NDU4ZWFjMjQ2NTQ3NTg

@@ -1,0 +1,29 @@
+# ===================================================================
+# Spring Cloud Config bootstrap configuration for the "dev" profile
+# In prod profile, properties will be overwritten by the ones defined in bootstrap-prod.yml
+# ===================================================================
+logging:
+  level:
+    com.alibaba.nacos.client: ERROR
+    com.alibaba.nacos.client.config.impl.CacheData: INFO
+    com.alibaba.nacos.client.config.impl.ClientWorker: INFO
+
+spring:
+  application:
+    name: socket-gateway
+  profiles:
+    # The commented value for `active` can be replaced with valid Spring profiles to load.
+    # Otherwise, it will be filled in by maven when building the JAR file
+    # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
+    active: #spring.profiles.active#
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        metadata:
+          heart-beat-interval: 3    # 心跳包发送周期,单位为秒
+          heart-beat-timeout: 6     # 心跳超时时间,即服务端6秒收不到心跳,会将客户端注册的实例设为不健康
+          ip-delete-timeout: 9      # 实例删除的超时时间,即服务端9秒收不到客户端心跳,会将客户端注册的实例删除
+      config:
+        file-extension: yaml
+        server-addr: localhost:8848
