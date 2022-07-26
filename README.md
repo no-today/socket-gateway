@@ -24,3 +24,7 @@ Wait for startup to complete
 1. Run GatewayServerApplication
 2. Run RequestClientControllerTest
 3. [Call client](./requests.http)
+
+## Use
+
+- [netty-remoting](https://github.com/no-today/netty-remoting): netty remoting module
