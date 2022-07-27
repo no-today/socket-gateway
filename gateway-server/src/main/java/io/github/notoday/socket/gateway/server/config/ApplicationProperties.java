@@ -41,20 +41,32 @@ public class ApplicationProperties {
     /**
      * 通过该 Topic 调用命令处理器
      * <p>
-     * 网关 -> 微服务
+     * 终端 -> 网关 -> 微服务
      */
     private String callServerTopic;
 
-    private NettyServerConfig nettyServer = new NettyServerConfig();
+    /**
+     * 通过该 Topic 调用客户端的命令处理器
+     * <p>
+     * 微服务 -> 网关 -> 终端
+     */
+    private String callClientTopic;
+
+    /**
+     * 集群模式
+     */
+    private boolean clusterMode = false;
+
+    private NettyServerConfig nettyServerConfig = new NettyServerConfig();
     private SecurityConfig securityConfig = new SecurityConfig();
+
+    @Bean
+    public RemotingServer remotingServer(NettyTokenAuthenticator nettyTokenAuthenticator) {
+        return new NettyRemotingServer(nettyServerConfig, null, nettyTokenAuthenticator);
+    }
 
     @Data
     public static class SecurityConfig {
         private String base64Secret;
-    }
-
-    @Bean
-    public RemotingServer remotingServer(NettyTokenAuthenticator nettyTokenAuthenticator) {
-        return new NettyRemotingServer(nettyServer, null, nettyTokenAuthenticator);
     }
 }
