@@ -17,7 +17,7 @@ Wait for startup to complete
 ### Client Call Server
 
 1. Run GatewayServerApplication
-2. Run GetStringByLengthCommandProcessorTest / PingPongCommandProcessorTest
+2. Run GetStringByLengthCommandProcessorTest / ReturnRequestCommandProcessorTest
 
 ### Server Call Client
 
