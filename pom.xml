@@ -9,4 +9,8 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>gateway-server</module>
+        <module>command-processor-examples</module>
+    </modules>
 </project>
