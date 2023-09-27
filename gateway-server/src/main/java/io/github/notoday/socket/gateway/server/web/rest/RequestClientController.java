@@ -1,7 +1,7 @@
 package io.github.notoday.socket.gateway.server.web.rest;
 
 import io.github.notoday.netty.remoting.RemotingServer;
-import io.github.notoday.netty.remoting.common.RemotingSysResponseCode;
+import io.github.notoday.netty.remoting.common.RemotingSystemCode;
 import io.github.notoday.netty.remoting.protocol.RemotingCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,7 @@ public class RequestClientController {
         try {
             return ResponseEntity.ok(remotingServer.invokeSync(client, command, timeout));
         } catch (Exception e) {
-            return ResponseEntity.ok(RemotingCommand.failure(command.getReqId(), RemotingSysResponseCode.SYSTEM_ERROR, e.getMessage()));
+            return ResponseEntity.ok(RemotingCommand.failure(command.getReqId(), RemotingSystemCode.SYSTEM_ERROR, e.getMessage()));
         }
     }
 }

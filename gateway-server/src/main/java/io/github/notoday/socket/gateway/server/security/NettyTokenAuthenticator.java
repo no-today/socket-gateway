@@ -1,8 +1,8 @@
 package io.github.notoday.socket.gateway.server.security;
 
 import io.github.notoday.netty.remoting.exception.AuthenticationException;
-import io.github.notoday.netty.remoting.protocol.protobuf.AuthenticationToken;
 import io.github.notoday.netty.remoting.security.Authentication;
+import io.github.notoday.netty.remoting.security.AuthenticationToken;
 import io.github.notoday.netty.remoting.security.Authenticator;
 import io.netty.channel.Channel;
 import org.springframework.stereotype.Service;

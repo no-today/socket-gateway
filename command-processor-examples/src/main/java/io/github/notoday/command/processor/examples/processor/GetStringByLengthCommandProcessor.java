@@ -1,6 +1,6 @@
 package io.github.notoday.command.processor.examples.processor;
 
-import io.github.notoday.netty.remoting.common.RemotingSysResponseCode;
+import io.github.notoday.netty.remoting.common.RemotingSystemCode;
 import io.github.notoday.netty.remoting.protocol.RemotingCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -21,7 +21,7 @@ public class GetStringByLengthCommandProcessor implements RocketMQReplyListener<
         try {
             return RemotingCommand.success(message.getReqId(), RandomStringUtils.random(ByteBuffer.wrap(message.getBody()).getInt()).getBytes(), message.getExtFields());
         } catch (Exception e) {
-            return RemotingCommand.failure(message.getReqId(), RemotingSysResponseCode.SYSTEM_ERROR, RemotingHelper.exceptionSimpleDesc(e));
+            return RemotingCommand.failure(message.getReqId(), RemotingSystemCode.SYSTEM_ERROR, RemotingHelper.exceptionSimpleDesc(e));
         }
     }
 }

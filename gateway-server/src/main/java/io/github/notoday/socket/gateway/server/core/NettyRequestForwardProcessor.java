@@ -2,7 +2,7 @@ package io.github.notoday.socket.gateway.server.core;
 
 import io.github.notoday.netty.remoting.NettyRequestProcessor;
 import io.github.notoday.netty.remoting.RemotingServer;
-import io.github.notoday.netty.remoting.core.ErrorInfo;
+import io.github.notoday.netty.remoting.common.ErrorInfo;
 import io.github.notoday.netty.remoting.core.ResultCallback;
 import io.github.notoday.netty.remoting.protocol.RemotingCommand;
 import io.github.notoday.netty.remoting.security.RemotingSecurityUtils;

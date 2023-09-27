@@ -2,7 +2,7 @@ package io.github.notoday.socket.gateway.server.core;
 
 import com.alibaba.fastjson.JSON;
 import io.github.notoday.netty.remoting.RemotingServer;
-import io.github.notoday.netty.remoting.common.RemotingSysResponseCode;
+import io.github.notoday.netty.remoting.common.RemotingSystemCode;
 import io.github.notoday.netty.remoting.protocol.RemotingCommand;
 import io.github.notoday.socket.gateway.server.config.ApplicationProperties;
 import lombok.AllArgsConstructor;
@@ -33,7 +33,7 @@ public class CallClientMQReplyListener implements RocketMQReplyListener<Remoting
         String login = message.getExtFieldsOrDefault("login", null);
 
         if (StringUtils.isBlank(login)) {
-            return RemotingCommand.failure(message.getReqId(), RemotingSysResponseCode.SYSTEM_ERROR, "[login] can not empty");
+            return RemotingCommand.failure(message.getReqId(), RemotingSystemCode.SYSTEM_ERROR, "[login] can not empty");
         }
 
         if (!remotingServer.isConnected(login)) {
@@ -41,7 +41,7 @@ public class CallClientMQReplyListener implements RocketMQReplyListener<Remoting
                 log.debug("[Call-Client] target peer is not connected to this node, login: {}", login);
                 return null;
             } else {
-                return RemotingCommand.failure(message.getReqId(), RemotingSysResponseCode.REQUEST_FAILED, "[login] connection not established");
+                return RemotingCommand.failure(message.getReqId(), RemotingSystemCode.REQUEST_FAILED, "[login] connection not established");
             }
         }
 
@@ -49,7 +49,7 @@ public class CallClientMQReplyListener implements RocketMQReplyListener<Remoting
             return remotingServer.invokeSync(login, message, ttl);
         } catch (Exception e) {
             log.error("[Call-Client] exception, login: {}, request: {}", JSON.toJSONString(login), message, e);
-            return RemotingCommand.failure(message.getReqId(), RemotingSysResponseCode.SYSTEM_ERROR, RemotingHelper.exceptionSimpleDesc(e));
+            return RemotingCommand.failure(message.getReqId(), RemotingSystemCode.SYSTEM_ERROR, RemotingHelper.exceptionSimpleDesc(e));
         }
     }
 }
